@@ -1,4 +1,4 @@
-package jake.demos.repository;
+package jake.demos.repository.shop;
 
 import jake.demos.http.vo.Goods;
 import org.springframework.stereotype.Repository;

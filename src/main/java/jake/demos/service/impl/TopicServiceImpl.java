@@ -2,7 +2,7 @@ package jake.demos.service.impl;
 
 import jake.demos.http.response.BaseResponse;
 import jake.demos.http.vo.Topic;
-import jake.demos.repository.TopicMapper;
+import jake.demos.repository.forum.TopicMapper;
 import jake.demos.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

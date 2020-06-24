@@ -17,7 +17,7 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
-    @GetMapping("")
+    @GetMapping
     public ResponseEntity<Goods> listGoods() {
         return goodsService.listGoods().ok();
     }

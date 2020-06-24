@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 public class Goods {
     private Integer id;
     private String name;
+    private Integer price;
     @JsonProperty("create_time")
     private LocalDateTime createTime;
     @JsonProperty("update_time")
@@ -44,5 +45,13 @@ public class Goods {
 
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 }
