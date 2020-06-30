@@ -7,9 +7,24 @@
         <result column="title" property="title"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
+        <collection property="commentList" ofType="jake.demos.http.vo.TopicComment">
+            <result column="commentId" property="commentId"/>
+            <result column="comment_text" property="commentText"/>
+            <result column="user_id" property="userId"/>
+            <result column="createTime" property="createTime"/>
+        </collection>
     </resultMap>
 
     <select id="listTopic" resultMap="Topic">
-        select * from topic
+        select t.id, t.title, t.create_time, t.update_time, tc.id as commentId, tc.comment_text,
+        tc.user_id, tc.create_time as createTime from topic t left join topic_comment tc on tc.topic_id = t.id
+        <where>
+            <if test="request.id != null">
+                t.id = #{request.id}
+            </if>
+            <if test="request.title != null and request.title != ''">
+                t.title like concat('%', #{request.title}, '%')
+            </if>
+        </where>
     </select>
 </mapper>

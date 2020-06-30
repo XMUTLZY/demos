@@ -2,6 +2,7 @@ package jake.demos.http.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.pagehelper.PageInfo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import java.util.Collection;
@@ -13,6 +14,8 @@ import java.util.Collection;
 public class BaseResponse<T> {
     private T record;
     private Collection<T> records;
+    @JsonProperty("records_paging")
+    private PageInfo<T> recordsPaging;
     @JsonProperty("total_records")
     private Integer totalRecords;
     private String message;
@@ -67,5 +70,13 @@ public class BaseResponse<T> {
 
     public void setStatusCode(Integer statusCode) {
         this.statusCode = statusCode;
+    }
+
+    public PageInfo<T> getRecordsPaging() {
+        return recordsPaging;
+    }
+
+    public void setRecordsPaging(PageInfo<T> recordsPaging) {
+        this.recordsPaging = recordsPaging;
     }
 }

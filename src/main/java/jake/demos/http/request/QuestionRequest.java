@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 /**
  * Created by Jake.lin on 2020/06/23
  */
-public class QuestionRequest {
+public class QuestionRequest extends BaseSearchRequest{
     private Integer id;
     private String title;
     private String text;
@@ -35,5 +35,13 @@ public class QuestionRequest {
 
     public void setCommitTime(LocalDateTime commitTime) {
         this.commitTime = commitTime;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

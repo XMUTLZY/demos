@@ -1,5 +1,8 @@
 package jake.demos.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import jake.demos.http.request.QuestionRequest;
 import jake.demos.http.response.BaseResponse;
 import jake.demos.http.vo.Topic;
 import jake.demos.repository.forum.TopicMapper;
@@ -17,11 +20,12 @@ public class TopicServiceImpl implements TopicService {
     private TopicMapper topicMapper;
 
     @Override
-    public BaseResponse<Topic> listTopic() {
+    public BaseResponse<Topic> listTopicPaging(QuestionRequest request) {
         BaseResponse response = new BaseResponse();
-        List<Topic> topicList = topicMapper.listTopic();
+        Page page = PageHelper.startPage(request.getPageIndex(), request.getPageSize());
+        List<Topic> topicList = topicMapper.listTopic(request);
         response.setRecords(topicList);
-        response.setTotalRecords(topicList.size());
+        response.setTotalRecords((int) page.getTotal());
         return response;
     }
 }

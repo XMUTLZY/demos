@@ -1,11 +1,13 @@
 package jake.demos.controller;
 
+import jake.demos.http.request.QuestionRequest;
 import jake.demos.http.vo.Topic;
 import jake.demos.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -18,10 +20,10 @@ public class TopicController {
     private TopicService forumService;
 
     /**
-     * 查询所有帖子
+     * 分页查询帖子
      */
-    @GetMapping("")
-    public ResponseEntity<Topic> listTopic() {
-        return forumService.listTopic().ok();
+    @PostMapping
+    public ResponseEntity<Topic> listTopicPaging(@RequestBody QuestionRequest request) {
+        return forumService.listTopicPaging(request).ok();
     }
 }
