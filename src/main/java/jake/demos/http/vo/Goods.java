@@ -10,6 +10,7 @@ public class Goods {
     private Integer id;
     private String name;
     private Integer price;
+    private Integer number;
     @JsonProperty("create_time")
     private LocalDateTime createTime;
     @JsonProperty("update_time")
@@ -53,5 +54,13 @@ public class Goods {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 }

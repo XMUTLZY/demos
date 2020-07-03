@@ -21,15 +21,24 @@ public class BaseResponse<T> {
     private String message;
     @JsonProperty("status_code")
     private Integer statusCode = HttpStatus.OK.value();
+    @JsonProperty("http_status")
+    private HttpStatus httpStatus = HttpStatus.OK;
 
     public ResponseEntity<T> ok() {
         return new ResponseEntity(this, HttpStatus.OK);
     }
 
-    public ResponseEntity<T> failed(String message, HttpStatus httpStatus) {
-        this.message = message;
-        this.statusCode = httpStatus.value();
+    public ResponseEntity<T> failed() {
         return new ResponseEntity(this, httpStatus);
+    }
+
+    public BaseResponse() {
+    }
+
+    public BaseResponse(String message, Integer statusCode, HttpStatus httpStatus) {
+        this.message = message;
+        this.statusCode = statusCode;
+        this.httpStatus = httpStatus;
     }
 
     public T getRecord() {
@@ -78,5 +87,13 @@ public class BaseResponse<T> {
 
     public void setRecordsPaging(PageInfo<T> recordsPaging) {
         this.recordsPaging = recordsPaging;
+    }
+
+    public HttpStatus getHttpStatus() {
+        return httpStatus;
+    }
+
+    public void setHttpStatus(HttpStatus httpStatus) {
+        this.httpStatus = httpStatus;
     }
 }

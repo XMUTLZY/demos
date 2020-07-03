@@ -8,4 +8,5 @@ import jake.demos.http.vo.Goods;
  */
 public interface GoodsService {
     BaseResponse<Goods> listGoods();
+    BaseResponse<String> buyGoods(Integer goodsId, Integer userId);
 }

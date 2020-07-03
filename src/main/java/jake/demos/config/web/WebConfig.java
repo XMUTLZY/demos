@@ -21,4 +21,5 @@ public class WebConfig {
         pageHelper.setProperties(properties);
         return pageHelper;
     }
+
 }

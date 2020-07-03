@@ -6,6 +6,7 @@
         <result column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="price" property="price"/>
+        <result column="number" property="number"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
     </resultMap>
@@ -13,4 +14,8 @@
     <select id="listGoods" resultMap="Goods">
         select * from goods
     </select>
+
+    <update id="reduceGoodsNumber" parameterType="java.lang.Integer">
+        UPDATE goods m SET m.number = (SELECT number FROM ((SELECT number-1 as number from goods a where a.id = #{goodsId}) t))
+    </update>
 </mapper>

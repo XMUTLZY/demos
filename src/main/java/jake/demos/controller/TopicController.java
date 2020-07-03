@@ -26,4 +26,5 @@ public class TopicController {
     public ResponseEntity<Topic> listTopicPaging(@RequestBody QuestionRequest request) {
         return forumService.listTopicPaging(request).ok();
     }
+
 }
