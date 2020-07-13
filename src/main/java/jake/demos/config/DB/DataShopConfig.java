@@ -33,6 +33,7 @@ public class DataShopConfig {
     @Value("${spring.datasource.shop.driverClassName}")
     private String driverClassName;
 
+    // 数据源
     @Bean(name = "shopDataSource")
     public DataSource shopDataSource() {
         HikariDataSource hikariDataSource = new HikariDataSource();
